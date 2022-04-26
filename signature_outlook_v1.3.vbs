@@ -5,7 +5,7 @@ Set objSysInfo = CreateObject("ADSystemInfo")
 strUser = objSysInfo.UserName
 Set objUser = GetObject("LDAP://" & strUser)
 
-strZpov = "С уважением,"
+strZpov = "Г‘ ГіГўГ Г¦ГҐГ­ГЁГҐГ¬,"
 strPostIndex = ObjUser.postalCode
 strName = objUser.FullName 
 strTitle = objUser.Title
@@ -30,20 +30,20 @@ Set objSignatureEntries = objSignatureObject.EmailSignatureEntries
 Set objRange = objDoc.Range()
 strLogo = "https://aldocoppola.ru/images/aldo-mail.png"
 
-'формируем табличку в которую будут подставлены нужные записи в соответствующие блоки.
-'большая подпись представляет из себя табличку из 3 строчных блоков, 2 строка разделена на 2 ячейки
+'С„РѕСЂРјРёСЂСѓРµРј С‚Р°Р±Р»РёС‡РєСѓ РІ РєРѕС‚РѕСЂСѓСЋ Р±СѓРґСѓС‚ РїРѕРґСЃС‚Р°РІР»РµРЅС‹ РЅСѓР¶РЅС‹Рµ Р·Р°РїРёСЃРё РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ Р±Р»РѕРєРё.
+'Р±РѕР»СЊС€Р°СЏ РїРѕРґРїРёСЃСЊ РїСЂРµРґСЃС‚Р°РІР»СЏРµС‚ РёР· СЃРµР±СЏ С‚Р°Р±Р»РёС‡РєСѓ РёР· 3 СЃС‚СЂРѕС‡РЅС‹С… Р±Р»РѕРєРѕРІ, 2 СЃС‚СЂРѕРєР° СЂР°Р·РґРµР»РµРЅР° РЅР° 2 СЏС‡РµР№РєРё
 
 objDoc.Tables.Add objRange,1,1
 Set objTable = objDoc.Tables(1)
 
-objTable.Rows(1).select  ' строка 1, выделяем 
-objSelection.Cells.Merge ' обьеденяем в единую строку во всю ширину таблички
+objTable.Rows(1).select  ' Г±ГІГ°Г®ГЄГ  1, ГўГ»Г¤ГҐГ«ГїГҐГ¬ 
+objSelection.Cells.Merge ' Г®ГЎГјГҐГ¤ГҐГ­ГїГҐГ¬ Гў ГҐГ¤ГЁГ­ГіГѕ Г±ГІГ°Г®ГЄГі ГўГ® ГўГ±Гѕ ГёГЁГ°ГЁГ­Гі ГІГ ГЎГ«ГЁГ·ГЄГЁ
 
-objTable.Cell(1, 1).select ' выделяем 1 строку и задаем ей ширину
+objTable.Cell(1, 1).select ' ГўГ»Г¤ГҐГ«ГїГҐГ¬ 1 Г±ГІГ°Г®ГЄГі ГЁ Г§Г Г¤Г ГҐГ¬ ГҐГ© ГёГЁГ°ГЁГ­Гі
 objTable.Cell(1, 1).Width = 200
 
-' начинаем наполнять ячейку текстом о сотруднике ( ФИО, Должность, обьект, моб, почта)
-' адрес почты делаем кликабельным для быстрой отправки письма mailto:
+' Г­Г Г·ГЁГ­Г ГҐГ¬ Г­Г ГЇГ®Г«Г­ГїГІГј ГїГ·ГҐГ©ГЄГі ГІГҐГЄГ±ГІГ®Г¬ Г® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГҐ ( Г”Г€ГЋ, Г„Г®Г«Г¦Г­Г®Г±ГІГј, Г®ГЎГјГҐГЄГІ, Г¬Г®ГЎ, ГЇГ®Г·ГІГ )
+' Г Г¤Г°ГҐГ± ГЇГ®Г·ГІГ» Г¤ГҐГ«Г ГҐГ¬ ГЄГ«ГЁГЄГ ГЎГҐГ«ГјГ­Г»Г¬ Г¤Г«Гї ГЎГ»Г±ГІГ°Г®Г© Г®ГІГЇГ°Г ГўГЄГЁ ГЇГЁГ±ГјГ¬Г  mailto:
 
 objSelection.ParagraphFormat.Space1
 objSelection.TypeText CHR(11)
@@ -101,11 +101,11 @@ objSelection.Font.Bold = false
 objSelection.Font.underline = false
 objSelection.TypeText CHR(11)
 if len(trim(strintPhone))<>0 then
-objSelection.TypeText "Тел. раб.:  " & strfax & ", доб.: " & strintPhone
+objSelection.TypeText "Г’ГҐГ«. Г°Г ГЎ.:  " & strfax & ", Г¤Г®ГЎ.: " & strintPhone
 end if
 if len(trim(strPhone))<>0 then
 objSelection.TypeText CHR(11)
-objSelection.TypeText "Тел. моб.: " & strPhone
+objSelection.TypeText "Г’ГҐГ«. Г¬Г®ГЎ.: " & strPhone
 end if
 objSelection.TypeText CHR(11)
 objSelection.TypeText CHR(11)
@@ -144,8 +144,8 @@ objSelection.TypeText "_________________________________________________________
 objSelection.TypeText CHR(11)
 objSelection.Font.underline = false
 
-objSelection.TypeText "Читая данное сообщение, Вы также соглашаетесь с " 
-Set objLink = objSelection.Hyperlinks.Add(objSelection.Range,"https://aldocoppola.ru/disclaimer/",,"", "ограничением об ответственности")
+objSelection.TypeText "Г—ГЁГІГ Гї Г¤Г Г­Г­Г®ГҐ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ, Г‚Г» ГІГ ГЄГ¦ГҐ Г±Г®ГЈГ«Г ГёГ ГҐГІГҐГ±Гј Г± " 
+Set objLink = objSelection.Hyperlinks.Add(objSelection.Range,"https://aldocoppola.ru/disclaimer/",,"", "Г®ГЈГ°Г Г­ГЁГ·ГҐГ­ГЁГҐГ¬ Г®ГЎ Г®ГІГўГҐГІГ±ГІГўГҐГ­Г­Г®Г±ГІГЁ")
 objLink.Range.Font.Name = "Calibri" 
 objLink.Range.Font.Size = 9
 objLink.Range.Font.Bold = false
@@ -154,14 +154,14 @@ objLink.Range.Font.Bold = false
 
 Set objSelection = objDoc.Range()
 
-objSignatureEntries.Add "Личная подпись", objSelection
-objSignatureObject.NewMessageSignature = "Личная подпись"
+objSignatureEntries.Add "Г‹ГЁГ·Г­Г Гї ГЇГ®Г¤ГЇГЁГ±Гј", objSelection
+objSignatureObject.NewMessageSignature = "Г‹ГЁГ·Г­Г Гї ГЇГ®Г¤ГЇГЁГ±Гј"
 
 objDoc.Saved = True
 
 ' Create Short Standard Signature
 
-strZpov = "С уважением,"
+strZpov = "Г‘ ГіГўГ Г¦ГҐГ­ГЁГҐГ¬,"
 strPostIndex = ObjUser.postalCode
 strName = objUser.FullName 
 strTitle = objUser.Title
@@ -184,20 +184,20 @@ Set objSignatureEntries = objSignatureObject.EmailSignatureEntries
 Set objRange = objDoc.Range()
 strLogo = "https://aldocoppola.ru/images/aldo-mail.png"
 
-'формируем табличку в которую будут подставлены нужные записи в соответствующие блоки.
-'большая подпись представляет из себя табличку из 3 строчных блоков, 2 строка разделена на 2 ячейки
+'ГґГ®Г°Г¬ГЁГ°ГіГҐГ¬ ГІГ ГЎГ«ГЁГ·ГЄГі Гў ГЄГ®ГІГ®Г°ГіГѕ ГЎГіГ¤ГіГІ ГЇГ®Г¤Г±ГІГ ГўГ«ГҐГ­Г» Г­ГіГ¦Г­Г»ГҐ Г§Г ГЇГЁГ±ГЁ Гў Г±Г®Г®ГІГўГҐГІГ±ГІГўГіГѕГ№ГЁГҐ ГЎГ«Г®ГЄГЁ.
+'ГЎГ®Г«ГјГёГ Гї ГЇГ®Г¤ГЇГЁГ±Гј ГЇГ°ГҐГ¤Г±ГІГ ГўГ«ГїГҐГІ ГЁГ§ Г±ГҐГЎГї ГІГ ГЎГ«ГЁГ·ГЄГі ГЁГ§ 3 Г±ГІГ°Г®Г·Г­Г»Гµ ГЎГ«Г®ГЄГ®Гў, 2 Г±ГІГ°Г®ГЄГ  Г°Г Г§Г¤ГҐГ«ГҐГ­Г  Г­Г  2 ГїГ·ГҐГ©ГЄГЁ
 
 objDoc.Tables.Add objRange,1,1
 Set objTable = objDoc.Tables(1)
 
-objTable.Rows(1).select  ' строка 1, выделяем 
-objSelection.Cells.Merge ' обьеденяем в единую строку во всю ширину таблички
+objTable.Rows(1).select  ' Г±ГІГ°Г®ГЄГ  1, ГўГ»Г¤ГҐГ«ГїГҐГ¬ 
+objSelection.Cells.Merge ' Г®ГЎГјГҐГ¤ГҐГ­ГїГҐГ¬ Гў ГҐГ¤ГЁГ­ГіГѕ Г±ГІГ°Г®ГЄГі ГўГ® ГўГ±Гѕ ГёГЁГ°ГЁГ­Гі ГІГ ГЎГ«ГЁГ·ГЄГЁ
 
-objTable.Cell(1, 1).select ' выделяем 1 строку и задаем ей ширину
+objTable.Cell(1, 1).select ' ГўГ»Г¤ГҐГ«ГїГҐГ¬ 1 Г±ГІГ°Г®ГЄГі ГЁ Г§Г Г¤Г ГҐГ¬ ГҐГ© ГёГЁГ°ГЁГ­Гі
 objTable.Cell(1, 1).Width = 200
 
-' начинаем наполнять ячейку текстом о сотруднике ( ФИО, Должность, обьект, моб, почта)
-' адрес почты делаем кликабельным для быстрой отправки письма mailto:
+' Г­Г Г·ГЁГ­Г ГҐГ¬ Г­Г ГЇГ®Г«Г­ГїГІГј ГїГ·ГҐГ©ГЄГі ГІГҐГЄГ±ГІГ®Г¬ Г® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГҐ ( Г”Г€ГЋ, Г„Г®Г«Г¦Г­Г®Г±ГІГј, Г®ГЎГјГҐГЄГІ, Г¬Г®ГЎ, ГЇГ®Г·ГІГ )
+' Г Г¤Г°ГҐГ± ГЇГ®Г·ГІГ» Г¤ГҐГ«Г ГҐГ¬ ГЄГ«ГЁГЄГ ГЎГҐГ«ГјГ­Г»Г¬ Г¤Г«Гї ГЎГ»Г±ГІГ°Г®Г© Г®ГІГЇГ°Г ГўГЄГЁ ГЇГЁГ±ГјГ¬Г  mailto:
 
 objSelection.ParagraphFormat.Space1
 objSelection.TypeText CHR(11)
@@ -255,11 +255,11 @@ objSelection.Font.Bold = false
 objSelection.Font.underline = false
 objSelection.TypeText CHR(11)
 if len(trim(strintPhone))<>0 then
-objSelection.TypeText "Тел. раб.:  " & strfax & ", доб.: " & strintPhone
+objSelection.TypeText "Г’ГҐГ«. Г°Г ГЎ.:  " & strfax & ", Г¤Г®ГЎ.: " & strintPhone
 end if
 if len(trim(strPhone))<>0 then
 objSelection.TypeText CHR(11)
-objSelection.TypeText "Тел. моб.: " & strPhone
+objSelection.TypeText "Г’ГҐГ«. Г¬Г®ГЎ.: " & strPhone
 end if
 
 objSelection.TypeText CHR(11)
@@ -271,8 +271,8 @@ objSelection.TypeText "_________________________________________________________
 objSelection.TypeText CHR(11)
 objSelection.Font.underline = false
 
-objSelection.TypeText "Читая данное сообщение, Вы также соглашаетесь с " 
-Set objLink = objSelection.Hyperlinks.Add(objSelection.Range,"https://aldocoppola.ru/disclaimer/",,"", "ограничением об ответственности")
+objSelection.TypeText "Г—ГЁГІГ Гї Г¤Г Г­Г­Г®ГҐ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ, Г‚Г» ГІГ ГЄГ¦ГҐ Г±Г®ГЈГ«Г ГёГ ГҐГІГҐГ±Гј Г± " 
+Set objLink = objSelection.Hyperlinks.Add(objSelection.Range,"https://aldocoppola.ru/disclaimer/",,"", "Г®ГЈГ°Г Г­ГЁГ·ГҐГ­ГЁГҐГ¬ Г®ГЎ Г®ГІГўГҐГІГ±ГІГўГҐГ­Г­Г®Г±ГІГЁ")
 objLink.Range.Font.Name = "Calibri" 
 objLink.Range.Font.Size = 9
 objLink.Range.Font.Bold = false
@@ -281,8 +281,8 @@ objLink.Range.Font.Bold = false
 
 Set objSelection = objDoc.Range()
  
-objSignatureEntries.Add "Личная подпись (Короткая)", objSelection
-objSignatureObject.ReplyMessageSignature = "Личная подпись (Короткая)"
+objSignatureEntries.Add "Г‹ГЁГ·Г­Г Гї ГЇГ®Г¤ГЇГЁГ±Гј (ГЉГ®Г°Г®ГІГЄГ Гї)", objSelection
+objSignatureObject.ReplyMessageSignature = "Г‹ГЁГ·Г­Г Гї ГЇГ®Г¤ГЇГЁГ±Гј (ГЉГ®Г°Г®ГІГЄГ Гї)"
  
 objDoc.Saved = True
 objDoc.Close
